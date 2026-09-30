@@ -4,6 +4,8 @@ Read `conjur-sandbox-lab/docs/development.md` before changing the lab. The proje
 
 For `okta-iam-suite/`, also read `okta-iam-suite/docs/development.md` and its setup guide. Use a dedicated Integrator Free Plan org and only registered synthetic actors; never mutate external identities or assume paid features. Run `make okta-setup && make okta-test` for its separate dependency/test environment. Live sign-in, MFA and lifecycle claims require an authorized configured Okta tenant. Local containment/JIT are lab mechanisms, not Okta PAM/Identity Governance.
 
+For `conjur-agent-identity/`, read its `docs/development.md` and research/translation boundaries. Use the real pinned Cedar engine; never treat untrusted prompts as identity, policy or delegated authority. Preserve signature/holder/chain attenuation, ancestor budgets, replay and revocation checks. Agents must never receive Conjur tool secrets. Synthetic demos and finite reference-model equivalence are not live Conjur, model robustness, full MAML equivalence, human-authenticated consent or production claims.
+
 - Keep all actual credentials and private evidence out of source control. `.runtime/` and `.env` are ignored; policies contain declarations only. Never print keys, tokens, message bodies, private runtime state, or unredacted server logs.
 - Root Make targets delegate to `conjur-sandbox-lab/`. Run `make test` for offline unit tests and Bash syntax. Docker is required for live acceptance; offline mocks never establish real Conjur policy or container behavior.
 - Preserve existing accounts, API keys, secret values, policy grants, and database volume unless a command explicitly documents its mutation. Additive POST does not revoke grants: use reviewed explicit PATCH deletion statements.

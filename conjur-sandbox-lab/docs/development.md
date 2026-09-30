@@ -4,6 +4,8 @@ Read the repository `AGENTS.md` and this file before making changes. This reposi
 
 `okta-iam-suite/` is a separate human-IAM companion with its own [development handoff](../../okta-iam-suite/docs/development.md). It does not synchronize Okta groups into Conjur or replace existing scope bearer tokens. Root `okta-*` targets use a separate Python virtual environment and tests. Preserve the separation of human federation, tenant API permissions and Conjur workload secret access.
 
+`conjur-agent-identity/` is a separate application-layer signed-delegation/Cedar prototype with its own [handoff](../../conjur-agent-identity/docs/development.md). Its optional Conjur initialization adds only the `agent-lab` branch and captures per-tool keys through the trusted sandbox manager. Agent grants are not Conjur API keys, agent runtime policy is not translated MAML, and no live tool or full-equivalence claim follows from its synthetic demo.
+
 ## Architecture and file ownership
 
 | Surface | Source of truth | What changes together |
